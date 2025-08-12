@@ -1,0 +1,33 @@
+# .air.toml
+# Raiz do projeto
+root = "."
+
+# Diretório temporário para build e binário
+tmp_dir = "tmp"
+
+[build]
+  # Comando para compilar
+  cmd = "go build -o tmp/main ."
+  # Caminho do binário Linux
+  bin = "tmp/main"
+  # Delay antes de reiniciar (ms)
+  delay = 1000
+  # Força polling, que funciona melhor em volumes Docker
+  poll = true
+  # Intervalo de polling (ms)
+  poll_interval = 1000
+  # Quais extensões observar
+  include_ext = ["go", "tpl", "tmpl", "html"]
+  # Quais diretórios ignorar
+  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+  # Reiniciar mesmo sem mudanças de timestamp
+  exclude_unchanged = false
+
+[log]
+  time = true
+  main_only = false
+
+[color]
+  build  = "yellow"
+  runner = "green"
+  watcher= "cyan"
